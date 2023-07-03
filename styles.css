@@ -2,6 +2,8 @@
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -16,6 +18,7 @@ body {
 }
 
 .main {
+  position: relative;
   width: 40rem;
   height: auto;
   display: flex;
@@ -129,6 +132,64 @@ body {
 .mid-btm p {
   font-weight: 600;
 }
+
+/* topbar */
+.new{
+  position: absolute;
+  display: flex;
+  left: 50%;
+  top: -3.3rem;
+  transform: translateX(-50%);
+
+}
+form{
+  background: #465C69;
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  height: 7vh;
+  width: 640px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+form input{
+  background: #465C69;
+  font-family: 'Roboto Mono', monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  height: 7vh;
+  width: 350px;
+  border: 1px none;
+  border-radius: 4px 0 0 4px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+form button{
+  background: #3931dd;
+  font-family: 'Roboto Mono', monospace;
+  color: #ffffff;
+  justify-content: left;
+  align-items: center;
+  font-size: 15px;
+  height: 5vh;
+  width: 100px;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  
 
 .chini {
   width: 100%;
