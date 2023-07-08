@@ -28,145 +28,81 @@
      <ul>
     </ul>
     <script>
-      fetch('https://api.github.com/users')
-  .then(response => response.json())
+      fetch(`https://jsonplaceholder.typicode.com/users`)
+  .then(res => res.json())
   .then(data => {
+    console.log(data)
     const users = Array.isArray(data) ? data : [data];
-    users.forEach(user => {
-      const imageUrl = user.avatar_url;
-      const username = user.login;
-
-      fetch(`https://api.github.com/users/${username}/repos`)
-        .then(response => response.json())
-        .then(reposData => {
-          const numberOfRepos = reposData.length;
-
-          const markup = `
-            <div class="top">
-              <div class="tp-lft">
-                <img src="${imageUrl}">
-              </div>
-              <div class="tp-rt">
-                <h1>${username}</h1>
-                <small>${user.node_id}</small>
-                <p>Joined 25 Jan 2011</p>
-              </div>
-            </div>
-
-            <div class="chini">
-              <a href="#">
-                <i class="bi bi-geo-alt"></i>
-                San Francisco</a>
-              <a href="#">
-                <i class="bi bi-twitter"></i>
-                Not available</a>
-              <a href="#">
-                <i class="bi bi-link-45deg"></i>
-                ${user.url}</a>
-              <a href="#">
-                <i class="bi bi-buildings"></i>
-                @github</a>
-            </div>
-
-            <div class="mid">
-              <div class="mid-tp">
-                <h2>Repos</h2>
-                <h2>Followers</h2>
-                <h2>Following</h2>
-              </div>
-
-              <div class="mid-btm">
-                <p>${numberOfRepos}</p>
-                <p>9644</p>
-                <p>9</p>
-              </div>
-            </div>
-          `;
-          document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
-        })
-        .catch(error => console.log(error));
-    });
-  })
-  .catch(error => console.log(error));
-
-     </script>
-    
-    
-     
-  <!-- top part -->
-    <div class="top">
+    users.forEach(users => {
+      const imageUrl = users.avatar_url;
+      const markup = `
+      <div class="top">
       <div class="tp-lft">
         <img src="cat.jpg">
       </div>
+    
+
       
       <div class="tp-rt">
         <h1>
-          The Octocat
+          ${users.name}
         </h1>
         <small>
-          @octocat
+          ${users.username}
         </small>
         <p>
-          Joined 25 Jan 2011
+          ${users.phone}
         </p>
       </div>
     </div>
 
-    <!-- mid top -->
-    <div class="midd-top">
-      <span>This profile has no bio</span>  
-    </div>
-
-    <!-- middle part -->
     <div class="mid">
       <div class="mid-tp">
         <h2>
-          Repos
+          Company
         </h2>
         <h2>
-          Followers
+          Latitude
         </h2>
         <h2>
-          Following
+          Longitude
         </h2>
       </div>
 
       <div class="mid-btm">
         <p>
-          8
+          ${users.company.name}
         </p>
         <p>
-          9644
+          ${users.address.geo.lat}
         </p>
         <p>
-          9
+          ${users.address.geo.lng}
         </p>
       </div>
     </div>
 
-
-    <!-- bottom part -->
     <div class="chini">
       <a href="#">
         <i class="bi bi-geo-alt"></i>
-        San Fransisco</a>
+        ${users.address.city}</a>
       <a href="#">
         <i class="bi bi-twitter"></i>
         Not available</a>
       <a href="#">
         <i class="bi bi-link-45deg"></i>
-        hhtps://github.blog</a>
+        ${users.email}</a>
       <a href="#">
         <i class="bi bi-buildings"></i>
-        @github</a>
+        ${users.address.suite}</a>
     </div>
+      `;
+      document.querySelector('ul').insertAdjacentHTML('beforeend', markup);
+    });
+  })
 
-  </div>
-  
+  .catch(error => console.log(error));
+
+     </script>
 </body>
-<script>
-  
-// const fetchButton = document.querySelector('#fetchButton');
-//     fetchButton.addEventListener('click', fetchUserInfo);
-</script>
 </html>
